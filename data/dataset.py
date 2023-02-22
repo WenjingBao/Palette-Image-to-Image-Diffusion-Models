@@ -24,8 +24,8 @@ def make_dataset(dir):
         for root, _, fnames in sorted(os.walk(dir)):
             for fname in sorted(fnames):
                 if is_image_file(fname):
-                    path = os.path.join(root, fname)
-                    images.append(path)
+                    #path = os.path.join(root, fname)
+                    images.append(fname)
 
     return images
 
@@ -160,10 +160,10 @@ class ColorizationDataset(data.Dataset):
 
     def __getitem__(self, index):
         ret = {}
-        file_name = str(self.flist[index]).zfill(5) + '.png'
+        file_name = str(self.flist[index]).zfill(5)# + '.png'
 
-        img = self.tfs(self.loader('{}/{}/{}'.format(self.data_root, 'color', file_name)))
-        cond_image = self.tfs(self.loader('{}/{}/{}'.format(self.data_root, 'gray', file_name)))
+        img = self.tfs(self.loader('{}/{}/{}'.format(self.data_root, 'thermal', file_name)))
+        cond_image = self.tfs(self.loader('{}/{}/{}'.format(self.data_root, 'rgb', file_name)))
 
         ret['gt_image'] = img
         ret['cond_image'] = cond_image

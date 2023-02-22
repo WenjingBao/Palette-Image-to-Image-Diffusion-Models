@@ -1,17 +1,16 @@
 {
-    "name": "colorization_mirflickr25k", // experiments name
-    "gpu_ids": [0], // gpu ids list, default is single 0
-    "seed" : -1, // random seed, seed <0 represents randomization not used 
-    "finetune_norm": false, // find the parameters to optimize
+    "name": "infraredization_FLIR", 
+    "gpu_ids": [0], 
+    "seed" : -1, 
+    "finetune_norm": false, 
 
-    "path": { //set every part file path
-        "base_dir": "experiments", // base path for all log except resume_state
-        "code": "code", // code backup
-        "tb_logger": "tb_logger", // path of tensorboard logger
+    "path": { 
+        "base_dir": "experiments", 
+        "code": "code", 
+        "tb_logger": "tb_logger", 
         "results": "results",
-        "checkpoint": "checkpoint",
-        // "resume_state": "experiments/inpainting_places2_220413_143231/checkpoint/25" 
-        "resume_state": null // ex: 100, loading .state  and .pth from given epoch and iteration
+        "checkpoint": "checkpoint", 
+        "resume_state": null  
     },
 
     "datasets": { // train or test
@@ -19,8 +18,8 @@
             "which_dataset": {  // import designated dataset using arguments 
                 "name": ["data.dataset", "ColorizationDataset"], // import Dataset() class / function(not recommend) from data.dataset.py (default is [data.dataset.py])
                 "args":{ // arguments to initialize dataset
-                    "data_root": "E:/Dataset/mirflickr25k/mirflickr25k/mirflickr",
-                    "data_flist": "E:/Dataset/mirflickr25k/mirflickr25k/mirflickr",
+                    "data_root": "E:/Dataset/FLIR_ADAS_v2",
+                    "data_flist": "E:/Dataset/FLIR_ADAS_v2/thermal",
                     "data_len": -1
                 } 
             },
@@ -46,8 +45,8 @@
             "which_dataset": {
                 "name": "ColorizationDataset", // import Dataset() class / function(not recommend) from default file
                 "args":{
-                    "data_root": "E:/Dataset/mirflickr25k/images",
-                    "data_flist": "E:/Dataset/mirflickr25k/flist/test.flist"
+                    "data_root": "E:/Dataset/FLIR_ADAS_v2",
+                    "data_flist": "E:/Dataset/FLIR_ADAS_v2/thermal"
                 }
             },
             "dataloader":{
