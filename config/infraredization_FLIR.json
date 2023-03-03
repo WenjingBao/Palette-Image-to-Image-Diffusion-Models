@@ -99,13 +99,12 @@
                         "num_head_channels": 32,
                         "res_blocks": 2,
                         "dropout": 0.2,
-                        "image_size": 224
+                        "image_size": 512
                     },
                     "beta_schedule": {
                         "train": {
                             "schedule": "linear",
                             "n_timestep": 2000,
-                            // "n_timestep": 5, // debug
                             "linear_start": 1e-6,
                             "linear_end": 0.01
                         },
